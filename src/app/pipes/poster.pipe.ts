@@ -13,5 +13,6 @@ export class PosterPipe implements PipeTransform {
       return './assets/img/no-image.jpg';
     }
   }
+  
 
 }

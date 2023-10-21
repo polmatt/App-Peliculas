@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Movie } from 'src/app/interfaces/cartelera-response';
 import { PeliculasService } from 'src/app/services/peliculas.service';
 
@@ -7,7 +7,7 @@ import { PeliculasService } from 'src/app/services/peliculas.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy {
 
   public movies: Movie[] = [];
   public moviesSlideshow: Movie[] = [];
@@ -21,7 +21,6 @@ export class HomeComponent {
 
    if ( pos > max ) {
     if(this.peliculasService.loading){
-          console.log('Api funcionando')
       return;
     }
       this.peliculasService.getCartelera().subscribe( resp => {
@@ -40,6 +39,10 @@ export class HomeComponent {
       this.movies = resp.results;
       this.moviesSlideshow = resp.results
     });
+   }
+
+   ngOnDestroy(): void {
+     this.peliculasService.reesetCarteleraPage();
    }
 
 }
