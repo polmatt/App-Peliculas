@@ -6,6 +6,7 @@ import { SlideshowComponent } from './slideshow/slideshow.component';
 import { PeliculasPosterGridComponent } from './peliculas-poster-grid/peliculas-poster-grid.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { CastSlideshowComponent } from './cast-slideshow/cast-slideshow.component';
+import { StarRatingModule } from 'angular-star-rating'; 
 
 
 
@@ -28,7 +29,8 @@ import { CastSlideshowComponent } from './cast-slideshow/cast-slideshow.componen
   imports: [
     CommonModule,
     RouterModule,
-    PipesModule
+    PipesModule,
+    StarRatingModule.forRoot(),
 
   ]
 })
